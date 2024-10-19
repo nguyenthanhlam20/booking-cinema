@@ -1,0 +1,45 @@
+﻿@page
+@model CheckoutModel
+@{
+    ViewData["Title"] = "Checkout";
+}
+@{
+    // Initialize variables with default values
+    decimal totalPrice = Model.TotalPrice ?? 0;
+    int totalSeats = Model.SeatBookings!.Count();
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkout</title>
+</head>
+<body>
+    <div class="container">
+        <form method="post" asp-page-handler="Checkout">
+            <!-- Include hidden input for total price -->
+            <input type="hidden" name="totalPrice" value="@Model.TotalPrice" />
+            <div class="table-responsive">
+                <table style="margin-top: 100px; background-color: white;" class="table table-dark table-hover">
+                    <thead>
+                        <tr>
+                            <th class="col-4">Total Price</th>
+                            <th class="col-5">Total number of tickets</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>@string.Format("{0:#,##0} VNĐ", totalPrice)</td>
+
+                            <td>@totalSeats</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="mb-4">
+                    <button !important;" type="submit" name="payment" class="btn border-secondary text-uppercase text-primary mt-2" value="Pay with VNPay">Pay with VNPay</button>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

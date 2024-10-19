@@ -1,0 +1,43 @@
+﻿@page
+@model BookingCinema.Pages.Admin.SeatBookings.DetailsModel
+@{
+}
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+}
+
+<h1>SeatBooking Details</h1>
+
+<div class="card p-3">
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SeatBooking!.BookingDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SeatBooking!.BookingDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SeatBooking!.Seat)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SeatBooking!.Seat!.SeatId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SeatBooking!.Showtime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SeatBooking!.Showtime!.ShowtimeId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.User)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SeatBooking!.User!.UserId)
+        </dd>
+    </dl>
+    <div>
+        <a class="btn btn-danger" asp-page="/Admin/SeatBookings/Index">Back to List</a>
+        <a class="btn btn-primary" asp-page="/Admin/SeatBookings/Update" asp-route-id="@Model.SeatBooking!.BookingId">Edit</a>
+    </div>
+</div>

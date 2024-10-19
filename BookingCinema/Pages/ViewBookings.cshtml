@@ -1,0 +1,120 @@
+﻿@page
+@model BookingCinema.Pages.ViewBookingsModel
+
+@{
+    var total = Model.SeatBookings?.Sum(item => item.Seat!.Price);
+
+    var discount = (int)ViewData["Discount"]!;
+    var amount = total - (total * discount / 100);
+}
+
+<style>
+    .discount {
+        color: white;
+    }
+
+    .cancel-button {
+        padding: 5px 15px;
+        border-radius: 5px;
+        width: 100%;
+    }
+</style>
+
+<div class="container">
+
+
+    <div class="table-responsive">
+        @if (Model.SeatBookings != null && Model.SeatBookings.Count > 0)
+        {
+            <table style="margin-top: 100px; background-color: white;" class="table table-dark table-hover">
+                <thead>
+                    <tr>
+                        <th>Movie</th>
+                        <th>Showtime</th>
+                        <th>Row</th>
+                        <th>Column</th>
+                        <th>Price</th>
+                        <th>Booking Date</th>
+                        <th>Ticket Cancellation</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model.SeatBookings)
+                    {
+                        <tr>
+                            <td>@item.Showtime!.Movie!.Title</td>
+                            <td>@item.Showtime.ShowDateTime.ToString("HH:mm")</td>
+                            <td>@item.Showtime!.Theater!.Seats.First(s => s.SeatId == item.SeatId).NRow</td>
+                            <td>@item.Showtime.Theater.Seats.First(s => s.SeatId == item.SeatId).NColumn</td>
+                            <td>@string.Format("{0:#,##0} VNĐ", item.Seat!.Price)</td>
+                            <td>@item.BookingDate.ToString("HH:mm dd/MM/yyyy")</td>
+                            <td>
+                                <button type="button" onclick="onCancel(@item.BookingId);" class="cancel-button btn-danger">Cancel</button>
+
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+            <div class="discount ">
+
+                <div class="d-flex gap-3 mb-2">
+                    <h6>Select Discount: </h6>
+                    <div>
+                        <input type="radio" @(discount == 5 ? "checked" : "") onclick="window.location.href='ViewBookings?Discount=5'" name="Discount" class="discount-item form-check" />
+                        <span>5%</span>
+                    </div>
+                    <div>
+                        <input type="radio" @(discount == 10 ? "checked" : "") onclick="window.location.href='ViewBookings?Discount=10'" name="Discount" class="discount-item form-check" />
+                        <span>10%</span>
+                    </div>
+                    <div>
+                        <input type="radio" @(discount == 15 ? "checked" : "") onclick="window.location.href='ViewBookings?Discount=15'" name="Discount" class="discount-item form-check" />
+                        <span>15%</span>
+                    </div>
+                    <div>
+                        <input type="radio" @(discount == 20 ? "checked" : "") onclick="window.location.href='ViewBookings?Discount=20'" name="Discount" class="discount-item form-check" />
+                        <span>20%</span>
+                    </div>
+                    <div>
+                        <input type="radio" @(discount == 25 ? "checked" : "") onclick="window.location.href='ViewBookings?Discount=25'" name="Discount" class="discount-item form-check" />
+                        <span>25%</span>
+                    </div>
+                    <div>
+                        <input type="radio" @(discount == 30 ? "checked" : "") onclick="window.location.href='ViewBookings?Discount=30'" name="Discount" class="discount-item form-check" />
+                        <span>30%</span>
+                    </div>
+                </div>
+                <div class="d-flex gap-3 mb-2">
+                    <h6 colspan="4">Total:</h6>
+                    <h6 colspan="4">@String.Format("{0:0,0} VNĐ", amount)</h6>
+                </div>
+            </div>
+            <div class="d-flex justify-content-start">
+                <a asp-page="/Checkout/Index" asp-route-discount="@discount" class="btn btn-primary mb-5">Check Out</a>
+
+            </div>
+        }
+        else
+        {
+            <h6 style="color: white;margin-top: 100px;">There are no tickets</h6>
+        }
+    </div>
+
+    <form method="post" id="form-cancel" asp-page-handler="CancelBooking">
+        <input type="hidden" id="cancel-item" name="bookingId" />
+    </form>
+</div>
+
+<script>
+
+    function onCancel(id) {
+        const formCancel = document.getElementById('form-cancel');
+        const cancelItem = document.getElementById('cancel-item');
+        cancelItem.value = id;
+        formCancel.submit();
+    }
+
+</script>

@@ -1,0 +1,49 @@
+﻿@page
+@model BookingCinema.Pages.Admin.Seats.DetailsModel
+@{
+}
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Seat Details</h1>
+
+<div class="card p-3">
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Seat!.NRow)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Seat!.NRow)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Seat!.NColumn)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Seat!.NColumn)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Seat!.Price)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Seat!.Price)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Seat!.IsBooked)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Seat!.IsBooked)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Seat!.Theater)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Seat!.Theater!.TheaterId)
+        </dd>
+    </dl>
+    <div>
+        <a class="btn btn-danger" asp-page="/Admin/Seats/Index">Back to List</a>
+        <a asp-page="/Admin/Seats/Update" class="btn btn-primary" asp-route-id="@Model.Seat!.SeatId">Edit</a>
+    </div>
+</div>

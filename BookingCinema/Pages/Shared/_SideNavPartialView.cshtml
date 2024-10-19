@@ -1,0 +1,96 @@
+﻿@{
+    var currentPage = ViewContext.RouteData.Values["page"] as string;
+}
+
+<style>
+    .nav-item {
+        padding-left: 5px;
+    }
+
+        .nav-item:hover {
+            background: #ccc;
+        }
+
+            .nav-item:hover span,
+            .nav-item:hover i {
+                color: white;
+            }
+
+        .nav-item.active {
+            background: #ccc;
+        }
+
+            .nav-item.active span,
+            .nav-item.active i {
+                color: white;
+            }
+</style>
+<div class="side-nav">
+    <div class="side-nav-inner">
+        <ul class="side-nav-menu  scrollable">
+            <li class="nav-item @(currentPage?.Contains("Home") == true ? "active" : "")">
+                <a class="dropdown-toggle" asp-page="/Admin/Home/INdex">
+                    <span class="icon-holder">
+                        <i class="anticon anticon-dashboard"></i>
+                    </span>
+                    <span class="title ">Dashboard</span>
+                    <span class="arrow">
+                        <i class="arrow-icon"></i>
+                    </span>
+                </a>
+
+            </li>
+
+            <li class="nav-item @(currentPage?.Contains("Movies") == true ? "active" : "")">
+                <a asp-page="/Admin/Movies/Index">
+                    <span class="icon-holder">
+                        <i class="anticon anticon-project"></i>
+                    </span>
+                    <span class="title ">Movie Manager</span>
+                    <span class="arrow">
+                        <i class="arrow-icon"></i>
+                    </span>
+                </a>
+
+            </li>
+
+            <li class="nav-item @(currentPage?.Contains("Users")  == true ? "active" : "")">
+                <a asp-page="/Admin/Users/Index">
+                    <span class="icon-holder">
+                        <i class="anticon anticon-usergroup-add"></i>
+                    </span>
+                    <span class="title ">User Manager</span>
+                    <span class="arrow">
+                        <i class="arrow-icon"></i>
+                    </span>
+                </a>
+
+            </li>
+
+            <li class="nav-item @(currentPage?.Contains("Seats")  == true ? "active" : "")">
+                <a asp-page="/Admin/Seats/Index">
+                    <span class="icon-holder">
+                        <i class="anticon anticon-alipay"></i>
+                    </span>
+                    <span class="title ">Seat Manager</span>
+                    <span class="arrow">
+                        <i class="arrow-icon"></i>
+                    </span>
+                </a>
+
+
+            <li class="nav-item @(currentPage?.Contains("SeatBookings")  == true? "active" : "")">
+                <a asp-page="/Admin/SeatBookings/Index">
+                    <span class="icon-holder">
+                        <i class="anticon anticon-money-collect"></i>
+                    </span>
+                    <span class="title ">Ticket Manager</span>
+                    <span class="arrow">
+                        <i class="arrow-icon"></i>
+                    </span>
+                </a>
+
+            </li>
+        </ul>
+    </div>
+</div>

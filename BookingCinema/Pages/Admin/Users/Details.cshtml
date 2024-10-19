@@ -1,0 +1,48 @@
+﻿@page
+@model BookingCinema.Pages.Admin.Users.DetailsModel
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+}
+
+<h1>User Details</h1>
+
+<div class="card p-3">
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserModel!.Username)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserModel!.Username)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserModel!.Password)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserModel!.Password)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserModel!.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserModel!.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserModel!.FullName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserModel!.FullName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserModel!.Role)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserModel!.Role)
+        </dd>
+    </dl>
+    <div>
+        <a class="btn btn-danger" asp-page="/Admin/Users/Index">Back to List</a>
+        <a asp-page="/Admin/Users/Update" class="btn btn-primary" asp-route-id="@Model.UserModel!.UserId">Edit</a>
+    </div>
+</div>
+

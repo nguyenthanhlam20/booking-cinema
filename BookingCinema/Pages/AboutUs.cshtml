@@ -1,0 +1,112 @@
+﻿@page
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider Example</title>
+    <link rel="stylesheet" href="~/css/intro.css" asp-append-version="true" />
+    <link asp-append-version="true" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div id="slider" class="slider"
+         style="--img-prev:url(https://lh3.googleusercontent.com/aC9nyW5dhaYFmWD8fcf8DApjpH08eHEkbCHqmUPHRQ5T3jK-QyNKZYVMehmrvyPdEA_KxWvgZ3_kyOOYOAv99Ow3UoKSvEloleVKGSfLOwOyDV3Q6Dwi1G-NYoa9-t_ofmmskE6BYnVIOnIz2HWlMcijzIEwvKAL_R4z63DaLgG0z_OcGiSQHunwGAPXrBQUv42ZXuIMODq4zxDHczSxJ72b0-_udtdQK3JuT2X8nXCwFoF7GxmOpzXS0H5f50DuCbXoXcx-O7bgBMCXZdMpTxB27-wdXeLmxpYUySXgjSN2NAKmK16DmGLYvw5tMlrqwb8h4MJEEbXjP1pjPxXsahb7UZseEGyn80uLjATANJvusyJWCtzkkxYXPz-yI1rDvfEJKe2eyA-5AvFlzFBSwBMASn8f7mXinUrXMMREkJQjoi89NfZ91G7253OEVQOqcWxddiYtcHCO5v6Pl3QfV2SUTWXgggscDSY2ezjSPpYERNTXnIM_aCyWmIG7ybrfqOB0eVYBAgynyuPVbjd4KuZWZq2Dfu33HX1RuPKglbOuZGD1QbpJnruvUVkAmjDXI40ENN7X=w1600-h766);">
+        <div class="slider__content" id="slider-content">
+            <div class="slider__images">
+                <div class="slider__images-item slider__images-item--active" data-id="1">
+                    <img src="~/images/anh1.webp">
+                </div>
+                <div class="slider__images-item" data-id="2">
+                    <img src="~/images/anh2.jpg">
+                </div>
+                <div class="slider__images-item" data-id="3">
+                    <img src="~/images/anh3.jpg">
+                </div>
+                <div class="slider__images-item" data-id="4">
+                    <img src="~/images/anh4.jpg">
+                </div>
+                <div class="slider__images-item" data-id="5">
+                    <img src="~/images/anh5.jpg">
+                </div>
+            </div>
+            <div class="slider__text">
+                <div class="slider__text-item slider__text-item--active" data-id="1">
+                    <div class="slider__text-item-head">
+                        <h3>Cinema</h3>
+                    </div>
+                    <div class="slider__text-item-info">
+                        <p>
+                            "Cinema offers a high-quality experience with crisp visuals and live sound
+                            move."
+                        </p>
+                    </div>
+                </div>
+                <div class="slider__text-item" data-id="2">
+                    <div class="slider__text-item-head">
+                        <h3>Community Events</h3>
+                    </div>
+                    <div class="slider__text-item-info">
+                        <p>
+                            "The cinema is a meeting point for the community, where people share a passion for electricity
+                            photo."
+                        </p>
+                    </div>
+                </div>
+                <div class="slider__text-item" data-id="3">
+                    <div class="slider__text-item-head">
+                        <h3>Variety of content</h3>
+                    </div>
+                    <div class="slider__text-item-info">
+                        <p>
+                            "A variety of film genres from action, comedy to psychology, ensuring that there is a film suitable for all
+                            object."
+                        </p>
+                    </div>
+                </div>
+                <div class="slider__text-item" data-id="4">
+                    <div class="slider__text-item-head">
+                        <h3>Convenience and Enjoyment</h3>
+                    </div>
+                    <div class="slider__text-item-info">
+                        <p>
+                            "Booking tickets online and food is easy, and the space is luxurious and comfortable."
+                        </p>
+                    </div>
+                </div>
+                <div class="slider__text-item" data-id="5">
+                    <div class="slider__text-item-head">
+                        <h3>Emotional Discovery</h3>
+                    </div>
+                    <div class="slider__text-item-info">
+                        <p>
+                            "The cinema is a place to discover and share emotions, from joy and sadness to excitement
+                            likes and fears."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slider__nav">
+            <div class="slider__nav-arrows">
+                <div id="left" class="slider__nav-arrow slider__nav-arrow--left to left"></div>
+                <div id="right" class="slider__nav-arrow slider__nav-arrow--right to right"></div>
+            </div>
+            <div id="slider-dots" class="slider__nav-dots">
+                <div class="slider__nav-dot slider__nav-dot--active" data-id="1"></div>
+                <div class="slider__nav-dot" data-id="2"></div>
+                <div class="slider__nav-dot" data-id="3"></div>
+                <div class="slider__nav-dot" data-id="4"></div>
+                <div class="slider__nav-dot" data-id="5"></div>
+            </div>
+        </div>
+    </div>
+    <script src="~/js/intro.js"></script>
+    <script src="./main.js"></script>
+
+</body>
+
+</html>

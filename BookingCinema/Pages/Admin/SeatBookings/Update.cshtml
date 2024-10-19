@@ -1,0 +1,50 @@
+﻿@page
+@model BookingCinema.Pages.Admin.SeatBookings.UpdateModel
+@{
+}
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Edit SeatBooking</h1>
+
+<div class="card p-3">
+    <form method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="SeatBooking!.BookingId" />
+        <div class="form-group">
+            <label class="control-label">Showtime</label>
+            <select asp-for="SeatBooking!.ShowtimeId" class="form-control" asp-items="Model.Showtimes"></select>
+            <span asp-validation-for="SeatBooking!.ShowtimeId" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Seat</label>
+            <select asp-for="SeatBooking!.SeatId" class="form-control" asp-items="Model.Seats"></select>
+            <span asp-validation-for="SeatBooking!.SeatId" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label class="control-label">User</label>
+            <select asp-for="SeatBooking!.UserId" class="form-control" asp-items="Model.Users"></select>
+            <span asp-validation-for="SeatBooking!.UserId" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="SeatBooking!.BookingDate" class="control-label"></label>
+            <input asp-for="SeatBooking!.BookingDate" class="form-control" />
+            <span asp-validation-for="SeatBooking!.BookingDate" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <a class="btn btn-danger" asp-page="/Admin/SeatBookings/Index">Back to List</a>
+
+            <input type="submit" value="Save" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

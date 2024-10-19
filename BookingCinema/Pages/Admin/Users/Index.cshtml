@@ -1,0 +1,72 @@
+﻿@page
+@model BookingCinema.Pages.Admin.Users.IndexModel
+@{
+}
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+}
+
+<div class="d-flex justify-content-between">
+    <h1>List User</h1>
+
+    <p>
+        <a class="btn btn-primary" asp-page="/Admin/Users/Create">Create New</a>
+    </p>
+</div>
+<div class="card">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Users[0].Username)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Users[0].UserId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Users[0].Password)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Users[0].Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Users[0].FullName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Users[0].Role)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Users)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Username)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Password)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Role)
+                    </td>
+                    <td>
+                        <a asp-page="/Admin/Users/Update" class="btn btn-success" asp-route-id="@item.UserId">Edit</a> |
+                        <a asp-page="/Admin/Users/Details" class="btn btn-primary" asp-route-id="@item.UserId">Details</a> |
+                        <a asp-page="/Admin/Users/Delete" class="btn btn-danger" asp-route-id="@item.UserId">Delete</a>
+                    </td>
+                </tr>
+            }
+
+</div>
