@@ -8,9 +8,14 @@ using System.Security.Claims;
 
 namespace BookingCinema.Pages;
 
-public class LoginModel(IUserRepository repo) : PageModel
+public class LoginModel : PageModel
 {
-    private readonly IUserRepository _repo = repo;
+    private readonly IUserRepository _repo;
+
+    public LoginModel(IUserRepository repo)
+    {
+        _repo = repo;
+    }
 
     public string? Message { get; set; }
 

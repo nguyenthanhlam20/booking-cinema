@@ -5,9 +5,14 @@ using Repositories.Seats;
 
 namespace BookingCinema.Pages.Admin.Seats
 {
-    public class DetailsModel(ISeatRepository repo) : PageModel
+    public class DetailsModel : PageModel
     {
-        private readonly ISeatRepository _repository = repo;
+        private readonly ISeatRepository _repository;
+        public DetailsModel(ISeatRepository repo)
+        {
+            _repository = repo;
+        }
+
         [BindProperty]
         public Seat? Seat { get; set; }
 

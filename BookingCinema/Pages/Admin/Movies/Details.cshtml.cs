@@ -5,9 +5,16 @@ using Repositories.Movies;
 
 namespace BookingCinema.Pages.Admin.Movies
 {
-    public class DetailsModel(IMovieRepository repo) : PageModel
+    public class DetailsModel : PageModel
     {
-        private readonly IMovieRepository _repository = repo;
+        private readonly IMovieRepository _repository;
+
+        public DetailsModel(IMovieRepository repo)
+        {
+            _repository = repo;
+        }
+
+
 
         [BindProperty]
         public Movie? Movie { get; set; }

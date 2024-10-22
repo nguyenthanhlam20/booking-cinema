@@ -1,13 +1,18 @@
 using BusinessObjects.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Repositories.Seats;
 using Repositories.Users;
 
 namespace BookingCinema.Pages.Admin.Users;
-public class CreateModel(IUserRepository repo) : PageModel
+public class CreateModel : PageModel
 {
-    private readonly IUserRepository _repository = repo;
+    private readonly IUserRepository _repository;
+
+    public CreateModel(IUserRepository repo)
+    {
+        _repository = repo;
+    }
+
     [BindProperty]
     public User? UserModel { get; set; }
 

@@ -8,11 +8,20 @@ using System.Security.Claims;
 
 namespace BookingCinema.Pages;
 
-public class CheckoutModel(IVnPayService vnPayservice, IHttpContextAccessor httpContextAccessor, CinemaContext context) : PageModel
+public class CheckoutModel : PageModel
 {
-    private readonly CinemaContext _context = context;
-    private readonly IVnPayService _vnPayservice = vnPayservice;
-    private readonly IHttpContextAccessor _httpContextAccessor = httpContextAccessor;
+    private readonly CinemaContext _context;
+    private readonly IVnPayService _vnPayservice;
+    private readonly IHttpContextAccessor _httpContextAccessor;
+
+
+    public CheckoutModel(IVnPayService vnPayservice, IHttpContextAccessor httpContextAccessor, CinemaContext context)
+    {
+        _context = context;
+        _vnPayservice = vnPayservice;
+        _httpContextAccessor = httpContextAccessor;
+    }
+
 
     // Define TotalPrice property to hold the value from the URL
     public decimal? TotalPrice { get; private set; }

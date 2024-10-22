@@ -9,16 +9,25 @@ using Repositories.Users;
 
 namespace BookingCinema.Pages.Admin.SeatBookings;
 
-public class UpdateModel(
+public class UpdateModel : PageModel
+{
+    private readonly IBookingRepository _repository;
+    private readonly ISeatRepository _seatRepo;
+    private readonly IShowtimeRepository _showtimeRepo;
+    private readonly IUserRepository _userRepo;
+
+    public UpdateModel(
     IBookingRepository repo,
     ISeatRepository seatRepo,
     IShowtimeRepository showtimeRepo,
-    IUserRepository userRepo) : PageModel
-{
-    private readonly IBookingRepository _repository = repo;
-    private readonly ISeatRepository _seatRepo = seatRepo;
-    private readonly IShowtimeRepository _showtimeRepo = showtimeRepo;
-    private readonly IUserRepository _userRepo = userRepo;
+    IUserRepository userRepo)
+    {
+        _repository = repo;
+        _seatRepo = seatRepo;
+        _showtimeRepo = showtimeRepo;
+        _userRepo = userRepo;
+
+    }
 
     [BindProperty]
     public SeatBooking? SeatBooking { get; set; }
@@ -42,13 +51,13 @@ public class UpdateModel(
         var showtimes = await _showtimeRepo.ListAsync();
         Showtimes = new SelectList(showtimes, "ShowtimeId", "ShowDateTime", SeatBooking!.ShowtimeId);
 
-       
+
         return Page();
     }
 
     public async Task<IActionResult> OnPost()
     {
-        if(SeatBooking == null) return Page();
+        if (SeatBooking == null) return Page();
         await _repository.UpdateAsync(SeatBooking);
         return RedirectToPage("/Admin/SeatBookings/Index");
     }

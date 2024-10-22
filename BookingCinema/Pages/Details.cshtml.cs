@@ -6,10 +6,16 @@ using System.Security.Claims;
 
 namespace BookingCinema.Pages;
 
-public class DetailsModel(CinemaContext context, IHttpContextAccessor httpContextAccessor) : PageModel
+public class DetailsModel : PageModel
 {
-    private readonly CinemaContext _context = context;
-    private readonly IHttpContextAccessor _httpContextAccessor = httpContextAccessor;
+    private readonly CinemaContext _context;
+    private readonly IHttpContextAccessor _httpContextAccessor;
+
+    public DetailsModel(CinemaContext context, IHttpContextAccessor httpContextAccessor)
+    {
+        _context = context;
+        _httpContextAccessor = httpContextAccessor;
+    }
 
     public Movie? Movie { get; set; }
 
@@ -43,7 +49,7 @@ public class DetailsModel(CinemaContext context, IHttpContextAccessor httpContex
         }
 
         // Kiểm tra xem movieId có tồn tại trong bảng Movies không
-      
+
         // Lấy thông tin người dùng từ Claims
         var userId = GetUserId();
 

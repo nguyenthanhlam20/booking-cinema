@@ -6,11 +6,18 @@ using System.Security.Claims;
 
 namespace BookingCinema.Pages.Checkout;
 
-public class PaymentCallBackModel(IVnPayService vnPayService, CinemaContext context, IHttpContextAccessor httpContextAccessor) : PageModel
+public class PaymentCallBackModel : PageModel
 {
-    private readonly IVnPayService _vnPayService = vnPayService;
-    private readonly CinemaContext _context = context;
-    private readonly IHttpContextAccessor _httpContextAccessor = httpContextAccessor;
+    private readonly IVnPayService _vnPayService;
+    private readonly CinemaContext _context;
+    private readonly IHttpContextAccessor _httpContextAccessor;
+
+    public PaymentCallBackModel(IVnPayService vnPayService, CinemaContext context, IHttpContextAccessor httpContextAccessor)
+    {
+        _vnPayService = vnPayService;
+        _context = context;
+        _httpContextAccessor = httpContextAccessor;
+    }
 
     public IActionResult OnGet()
     {

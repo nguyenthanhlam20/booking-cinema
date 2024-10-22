@@ -5,10 +5,15 @@ using Repositories.Bookings;
 
 namespace BookingCinema.Pages.Admin.SeatBookings;
 
-public class IndexModel(IBookingRepository repo) : PageModel
+public class IndexModel : PageModel
 {
-    private readonly IBookingRepository _repository = repo;
-    public List<SeatBooking> SeatBookings { get; set; } = [];
+    private readonly IBookingRepository _repository;
+    public IndexModel(IBookingRepository repo)
+    {
+        _repository = repo;
+    }
+
+    public List<SeatBooking> SeatBookings { get; set; } = new();
 
     public async Task<IActionResult> OnGetAsync()
     {

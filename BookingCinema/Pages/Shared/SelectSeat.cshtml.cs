@@ -8,11 +8,18 @@ using System.Security.Claims;
 
 namespace BookingCinema.Pages.Shared;
 
-public class SelectSeatModel(CinemaContext context, IHttpContextAccessor httpContextAccessor, IUserRepository repo) : PageModel
+public class SelectSeatModel : PageModel
 {
-    private readonly CinemaContext _context = context;
-    private readonly IHttpContextAccessor _httpContextAccessor = httpContextAccessor;
-    private readonly IUserRepository _repo = repo;
+    private readonly CinemaContext _context;
+    private readonly IHttpContextAccessor _httpContextAccessor;
+    private readonly IUserRepository _repo;
+
+    public SelectSeatModel(CinemaContext context, IHttpContextAccessor httpContextAccessor, IUserRepository repo)
+    {
+        _context = context;
+        _httpContextAccessor = httpContextAccessor;
+        _repo = repo;
+    }
 
     [BindProperty]
     public Showtime? Showtime { get; set; }

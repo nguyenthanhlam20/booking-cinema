@@ -3,24 +3,28 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Repositories.Bookings;
 
-namespace BookingCinema.Pages.Admin.SeatBookings
+namespace BookingCinema.Pages.Admin.SeatBookings;
+
+public class DeleteModel : PageModel
 {
-    public class DeleteModel(IBookingRepository repo) : PageModel
+    private readonly IBookingRepository _repository;
+    public DeleteModel(IBookingRepository repo)
     {
-        private readonly IBookingRepository _repository = repo;
-        [BindProperty]
-        public SeatBooking? SeatBooking { get; set; }
+        _repository = repo;
+    }
 
-        public async Task<IActionResult> OnGet(int id)
-        {
-            SeatBooking = await _repository.GetAsync(id);
-            return Page();
-        }
+    [BindProperty]
+    public SeatBooking? SeatBooking { get; set; }
 
-        public async Task<IActionResult> OnPost(int id)
-        {
-            await _repository.DeleteAsync(id);
-            return RedirectToPage("/Admin/SeatBookings/Index");
-        }
+    public async Task<IActionResult> OnGet(int id)
+    {
+        SeatBooking = await _repository.GetAsync(id);
+        return Page();
+    }
+
+    public async Task<IActionResult> OnPost(int id)
+    {
+        await _repository.DeleteAsync(id);
+        return RedirectToPage("/Admin/SeatBookings/Index");
     }
 }

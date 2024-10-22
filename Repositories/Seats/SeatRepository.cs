@@ -2,8 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 
 namespace Repositories.Seats;
-public class SeatRepository(CinemaContext context) : BaseRepository(context), ISeatRepository
+public class SeatRepository : BaseRepository, ISeatRepository
 {
+
+    public SeatRepository(CinemaContext context) : base(context) { }
+
     public async Task<bool> AnyAsync(int id)
         => await _context.Seats.AnyAsync(x => x.SeatId == id);
 

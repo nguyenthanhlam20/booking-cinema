@@ -2,8 +2,10 @@
 using Microsoft.EntityFrameworkCore;
 
 namespace Repositories.Users;
-public class UserRepository(CinemaContext context) : BaseRepository(context), IUserRepository
+public class UserRepository : BaseRepository, IUserRepository
 {
+    public UserRepository(CinemaContext context) : base(context) { }
+
     public async Task<bool> AnyAsync(int id)
         => await _context.Users.AnyAsync(x => x.UserId == id);
 

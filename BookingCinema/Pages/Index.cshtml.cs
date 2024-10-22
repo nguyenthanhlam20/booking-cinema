@@ -4,10 +4,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BookingCinema.Pages;
 
-public class IndexModel(ILogger<IndexModel> logger, CinemaContext context) : PageModel
+public class IndexModel : PageModel
 {
-    private readonly ILogger<IndexModel> _logger = logger;
-    private readonly CinemaContext _context = context;
+    private readonly CinemaContext _context;
+
+    public IndexModel(CinemaContext context)
+    {
+        _context = context;
+    }
 
     public IList<Movie>? Movies { get; set; } // Danh sách các phim
 

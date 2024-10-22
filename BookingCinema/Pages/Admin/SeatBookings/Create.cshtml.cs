@@ -4,22 +4,32 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Repositories.Bookings;
+using Repositories.Movies;
 using Repositories.Seats;
 using Repositories.Showtimes;
 using Repositories.Users;
 
 namespace BookingCinema.Pages.Admin.SeatBookings;
 
-public class CreateModel(
-    IBookingRepository repo,
-    ISeatRepository seatRepo,
-    IShowtimeRepository showtimeRepo,
-    IUserRepository userRepo) : PageModel
+public class CreateModel : PageModel
 {
-    private readonly IBookingRepository _repository = repo;
-    private readonly ISeatRepository _seatRepo = seatRepo;
-    private readonly IShowtimeRepository _showtimeRepo = showtimeRepo;
-    private readonly IUserRepository _userRepo = userRepo;
+    private readonly IBookingRepository _repository;
+    private readonly ISeatRepository _seatRepo;
+    private readonly IShowtimeRepository _showtimeRepo;
+    private readonly IUserRepository _userRepo;
+
+    public CreateModel(
+        IBookingRepository repo,
+        ISeatRepository seatRepo,
+        IShowtimeRepository showtimeRepo,
+        IUserRepository userRepo)
+    {
+        _repository = repo;
+        _repository = repo;
+        _seatRepo = seatRepo;
+        _showtimeRepo = showtimeRepo;
+        _userRepo = userRepo;
+    }
 
 
     [BindProperty]

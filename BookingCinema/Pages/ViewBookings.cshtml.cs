@@ -6,11 +6,17 @@ using System.Security.Claims;
 
 namespace BookingCinema.Pages;
 
-public class ViewBookingsModel(ILogger<ViewBookingsModel> logger, CinemaContext context, IHttpContextAccessor httpContextAccessor) : PageModel
+public class ViewBookingsModel : PageModel
 {
-    private readonly ILogger<ViewBookingsModel> _logger = logger;
-    private readonly CinemaContext _context = context;
-    private readonly IHttpContextAccessor _httpContextAccessor = httpContextAccessor;
+    private readonly ILogger<ViewBookingsModel> _logger;
+    private readonly CinemaContext _context;
+    private readonly IHttpContextAccessor _httpContextAccessor;
+    public ViewBookingsModel(ILogger<ViewBookingsModel> logger, CinemaContext context, IHttpContextAccessor httpContextAccessor)
+    {
+        _logger = logger;
+        _context = context;
+        _httpContextAccessor = httpContextAccessor;
+    }
 
     public IList<SeatBooking>? SeatBookings { get; set; } // Danh sách các vé đã đặt
 
@@ -27,7 +33,7 @@ public class ViewBookingsModel(ILogger<ViewBookingsModel> logger, CinemaContext 
                 .ThenInclude(s => s!.Theater)
                     .ThenInclude(t => t!.Seats)
             .ToListAsync();
-        ViewData["Discount"] = discount;    
+        ViewData["Discount"] = discount;
 
     }
     public async Task<IActionResult> OnPostCancelBookingAsync(int bookingId)

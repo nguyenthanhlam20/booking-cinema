@@ -6,10 +6,14 @@ using System.Text.RegularExpressions;
 
 namespace BookingCinema.Pages;
 
-public class RegisterModel(IUserRepository repo) : PageModel
+public class RegisterModel : PageModel
 {
-    private readonly IUserRepository _repo = repo;
+    private readonly IUserRepository _repo;
 
+    public RegisterModel(IUserRepository repo)
+    {
+        _repo = repo;
+    }
     public string? Message { get; set; }
 
     [BindProperty]

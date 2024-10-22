@@ -4,10 +4,17 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Repositories.Movies;
 
 namespace BookingCinema.Pages.Admin.Movies;
-public class IndexModel(IMovieRepository repo) : PageModel
+public class IndexModel : PageModel
 {
-    private readonly IMovieRepository _repository = repo;
-    public List<Movie> Movies { get; set; } = [];
+
+    private readonly IMovieRepository _repository;
+
+    public IndexModel(IMovieRepository repo)
+    {
+        _repository = repo;
+    }
+
+    public List<Movie> Movies { get; set; } = new();
 
     public async Task<IActionResult> OnGetAsync()
     {

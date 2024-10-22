@@ -2,8 +2,10 @@
 using Microsoft.EntityFrameworkCore;
 
 namespace Repositories.Bookings;
-public class BookingRepository(CinemaContext context) : BaseRepository(context), IBookingRepository
+public class BookingRepository : BaseRepository, IBookingRepository
 {
+    public BookingRepository(CinemaContext context) : base(context) { }
+
     public async Task<bool> AnyAsync(int id)
         => await _context.SeatBookings.AnyAsync(x => x.BookingId == id);
 
@@ -52,7 +54,7 @@ public class BookingRepository(CinemaContext context) : BaseRepository(context),
         {
             exist.Showtime = entity.Showtime;
             exist.UserId = entity.UserId;
-            exist.SeatId  = entity.SeatId;
+            exist.SeatId = entity.SeatId;
             exist.BookingDate = entity.BookingDate;
             await _context.SaveChangesAsync();
         }

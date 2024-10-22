@@ -4,9 +4,15 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Repositories.Users;
 
 namespace BookingCinema.Pages.Admin.Users;
-public class UpdateModel(IUserRepository repo) : PageModel
+public class UpdateModel : PageModel
 {
-    private readonly IUserRepository _repository = repo;
+    private readonly IUserRepository _repository;
+
+    public UpdateModel(IUserRepository repo)
+    {
+        _repository = repo;
+    }
+
     [BindProperty]
     public User? UserModel { get; set; }
     public async Task<IActionResult> OnGet(int id)

@@ -1,6 +1,4 @@
-﻿using BookingCinema.Models;
-using BookingCinema.Models.MoMo;
-using BookingCinema.Services;
+﻿using BookingCinema.Services;
 using BusinessObjects.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
@@ -20,8 +18,6 @@ builder.Services.AddDbContext<CinemaContext>(options =>
     options.UseSqlServer(connectionString);
 });
 
-builder.Services.Configure<MomoOptionModel>(builder.Configuration.GetSection("MomoAPI"));
-builder.Services.AddScoped<IMomoService, MomoService>();
 builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)

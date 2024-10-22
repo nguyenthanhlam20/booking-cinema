@@ -2,8 +2,10 @@
 using Microsoft.EntityFrameworkCore;
 
 namespace Repositories.Movies;
-public class MovieRepository(CinemaContext context) : BaseRepository(context), IMovieRepository
+public class MovieRepository : BaseRepository, IMovieRepository
 {
+    public MovieRepository(CinemaContext context) : base(context) { }
+
     public async Task<bool> AnyAsync(int id)
         => await _context.Movies.AnyAsync(x => x.MovieId == id);
 

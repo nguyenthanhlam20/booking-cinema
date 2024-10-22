@@ -5,9 +5,14 @@ using Repositories.Users;
 
 namespace BookingCinema.Pages.Admin.Users;
 
-public class DetailsModel(IUserRepository repo) : PageModel
+public class DetailsModel : PageModel
 {
-    private readonly IUserRepository _repository = repo;
+    private readonly IUserRepository _repository;
+
+    public DetailsModel(IUserRepository repo)
+    {
+        _repository = repo;
+    }
 
     [BindProperty]
     public User? UserModel { get; set; }

@@ -4,9 +4,14 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Repositories.Movies;
 
 namespace BookingCinema.Pages.Admin.Movies;
-public class CreateModel(IMovieRepository repo) : PageModel
+public class CreateModel : PageModel
 {
-    private readonly IMovieRepository _repository = repo;
+    private readonly IMovieRepository _repository;
+
+    public CreateModel(IMovieRepository repo)
+    {
+        _repository = repo;
+    }
 
     [BindProperty]
     public Movie? Movie { get; set; }

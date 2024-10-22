@@ -6,12 +6,18 @@ using Repositories.Seats;
 using Repositories.Theaters;
 
 namespace BookingCinema.Pages.Admin.Seats;
-public class CreateModel(
-    ISeatRepository repo,
-    ITheaterRepository theaterRepo) : PageModel
+public class CreateModel : PageModel
 {
-    private readonly ISeatRepository _repository = repo;
-    private readonly ITheaterRepository _theaterRepo = theaterRepo;
+    private readonly ISeatRepository _repository;
+    private readonly ITheaterRepository _theaterRepo;
+    public CreateModel(
+        ISeatRepository repo,
+        ITheaterRepository theaterRepo)
+    {
+        _repository = repo;
+        _theaterRepo = theaterRepo;
+    }
+
     [BindProperty]
     public Seat? Seat { get; set; }
 
