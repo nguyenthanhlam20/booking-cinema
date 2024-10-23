@@ -5,19 +5,14 @@ namespace BusinessObjects.Models;
 
 public partial class CinemaContext : DbContext
 {
-    private IConfiguration _configuration;
-
-    public CinemaContext(IConfiguration configuration)
+    public CinemaContext()
     {
-        _configuration = configuration;
 
     }
 
-    public CinemaContext(DbContextOptions<CinemaContext> options, IConfiguration configuration)
+    public CinemaContext(DbContextOptions<CinemaContext> options)
         : base(options)
     {
-        _configuration = configuration;
-
     }
 
     public virtual DbSet<Movie> Movies { get; set; }
@@ -36,9 +31,19 @@ public partial class CinemaContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        if(!optionsBuilder.IsConfigured)
+        if (!optionsBuilder.IsConfigured)
         {
-            optionsBuilder.UseSqlServer(_configuration.GetConnectionString("DB"));
+            // Set up configuration to read the appsettings.json file
+            var config = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())  // Set the base path
+                .AddJsonFile("appsettings.json")               // Add the appsettings.json file
+                .Build();                                      // Build the configuration
+
+            // Get the connection string from appsettings.json
+            var connectionString = config.GetConnectionString("DB");
+
+            // Use the connection string to configure the DbContext
+            optionsBuilder.UseSqlServer(connectionString);
         }
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -48,9 +53,7 @@ public partial class CinemaContext : DbContext
             entity.HasKey(e => e.MovieId).HasName("PK__Movies__4BD2941A03317E3D");
 
             entity.Property(e => e.Genre).HasMaxLength(50);
-            entity.Property(e => e.Img)
-                .HasMaxLength(50)
-                .HasColumnName("img");
+            entity.Property(e => e.Img).HasColumnName("img");
             entity.Property(e => e.ReleaseDate).HasColumnType("date");
             entity.Property(e => e.Title).HasMaxLength(100);
         });

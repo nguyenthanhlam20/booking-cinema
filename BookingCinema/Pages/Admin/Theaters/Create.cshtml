@@ -1,0 +1,31 @@
+﻿@page
+@model BookingCinema.Pages.Admin.Theaters.CreateModel
+
+@{
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+
+    ViewData["Title"] = "Create";
+}
+
+<h3>Create Theater</h3>
+
+<div class="card p-3">
+    <form method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Theater.TheaterName" class="control-label"></label>
+            <input placeholder="Please enter theater name" asp-for="Theater.TheaterName" class="form-control" />
+            <span asp-validation-for="Theater.TheaterName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <a class="btn btn-danger" asp-page="Index">Back to List</a>
+|
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -15,9 +15,15 @@ public class IndexModel : PageModel
 
     public IList<Movie>? Movies { get; set; } // Danh sách các phim
 
+    public IList<Movie>? UpComingMovies { get; set; } // Danh sách các phim
+
+
     public async Task OnGetAsync()
     {
         // Lấy danh sách phim từ cơ sở dữ liệu và gán vào thuộc tính Movies
-        Movies = await _context.Movies.ToListAsync();
+        var movies = await _context.Movies.ToListAsync();
+
+        Movies = movies.Where(x => x.ReleaseDate <= DateTime.Now).ToList();
+        UpComingMovies = movies.Where(x => x.ReleaseDate >  DateTime.Now).ToList();
     }
 }

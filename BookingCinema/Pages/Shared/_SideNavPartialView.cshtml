@@ -40,6 +40,18 @@
                 </a>
 
             </li>
+            <li class="nav-item @(currentPage?.Contains("Theaters") == true ? "active" : "")">
+                <a asp-page="/Admin/Theaters/Index">
+                    <span class="icon-holder">
+                        <i class="anticon anticon-bulb"></i>
+                    </span>
+                    <span class="title ">Theater Manager</span>
+                    <span class="arrow">
+                        <i class="arrow-icon"></i>
+                    </span>
+                </a>
+
+            </li>
 
             <li class="nav-item @(currentPage?.Contains("Movies") == true ? "active" : "")">
                 <a asp-page="/Admin/Movies/Index">
@@ -52,6 +64,17 @@
                     </span>
                 </a>
 
+            </li>
+            <li class="nav-item @(currentPage?.Contains("ShowTimes")  == true ? "active" : "")">
+                <a asp-page="/Admin/ShowTimes/Index">
+                    <span class="icon-holder">
+                        <i class="anticon anticon-calendar"></i>
+                    </span>
+                    <span class="title ">Show Times Manager</span>
+                    <span class="arrow">
+                        <i class="arrow-icon"></i>
+                    </span>
+                </a>
             </li>
 
             <li class="nav-item @(currentPage?.Contains("Users")  == true ? "active" : "")">
@@ -77,7 +100,7 @@
                         <i class="arrow-icon"></i>
                     </span>
                 </a>
-
+            </li>
 
             <li class="nav-item @(currentPage?.Contains("SeatBookings")  == true? "active" : "")">
                 <a asp-page="/Admin/SeatBookings/Index">
@@ -85,6 +108,19 @@
                         <i class="anticon anticon-money-collect"></i>
                     </span>
                     <span class="title ">Ticket Manager</span>
+                    <span class="arrow">
+                        <i class="arrow-icon"></i>
+                    </span>
+                </a>
+
+            </li>
+
+            <li class="nav-item @(currentPage?.Contains("Feedbacks") == true ? "active" : "")">
+                <a asp-page="/Admin/Feedbacks/Index">
+                    <span class="icon-holder">
+                        <i class="anticon anticon-highlight"></i>
+                    </span>
+                    <span class="title ">Feedback Manager</span>
                     <span class="arrow">
                         <i class="arrow-icon"></i>
                     </span>

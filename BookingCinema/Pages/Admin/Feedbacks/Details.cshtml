@@ -1,0 +1,50 @@
+﻿@page
+@model BookingCinema.Pages.Admin.Feedbacks.DetailsModel
+
+@{
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+
+    ViewData["Title"] = "Details";
+}
+
+<h1>Feedback Details</h1>
+
+<div class="card p-3">
+
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Rating.RatingValue)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Rating.RatingValue)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Rating.Comment)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Rating.Comment)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Rating.RatingDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Rating.RatingDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Rating.Movie)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Rating.Movie.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Rating.User)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Rating.User.Email)
+        </dd>
+    </dl>
+    <div>
+        <a class="btn btn-danger" asp-page="./Index">Back to List</a>
+    </div>
+
+</div>

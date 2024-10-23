@@ -1,0 +1,60 @@
+﻿@page
+@model BookingCinema.Pages.Admin.Feedbacks.IndexModel
+
+@{
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+
+    ViewData["Title"] = "Index";
+}
+
+<h1>List Feedbacks</h1>
+
+<div class="card">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Rating[0].RatingValue)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Rating[0].Comment)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Rating[0].RatingDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Rating[0].Movie)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Rating[0].User)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Rating)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RatingValue)
+                    </td>
+                    <td style="max-width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                        @Html.DisplayFor(modelItem => item.Comment)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RatingDate)
+                    </td>
+                    <td style="max-width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                        @Html.DisplayFor(modelItem => item.Movie.Title)
+                    </td>
+                    <td style="max-width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                        @Html.DisplayFor(modelItem => item.User.Email)
+                    </td>
+                    <td>
+                        <a class="btn btn-primary" asp-page="./Details" asp-route-id="@item.RatingId">Details</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,45 @@
+﻿@page
+@model BookingCinema.Pages.Admin.Theaters.IndexModel
+
+@{
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+
+    ViewData["Title"] = "Index";
+}
+
+<div class="d-flex justify-content-between">
+    <h1>List Theaters</h1>
+
+    <p>
+        <a class="btn btn-primary" asp-page="Create">Create New</a>
+    </p>
+</div>
+
+<div class="card">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Theater[0].TheaterName)
+                </th>
+                <th class="text-center"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Theater)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TheaterName)
+                    </td>
+                    <td >
+                        <a class="btn btn-success" asp-page="./Edit" asp-route-id="@item.TheaterId">Edit</a> |
+                        <a class="btn btn-primary" asp-page="./Details" asp-route-id="@item.TheaterId">Details</a> |
+                        <a class="btn btn-danger" asp-page="./Delete" asp-route-id="@item.TheaterId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

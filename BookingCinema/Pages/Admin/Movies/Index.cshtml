@@ -46,10 +46,10 @@
             @foreach (var item in Model.Movies)
             {
                 <tr>
-                    <td>
+                    <td style="max-width: 150px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
                         @Html.DisplayFor(modelItem => item.Title)
                     </td>
-                    <td>
+                    <td style="max-width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
                         @Html.DisplayFor(modelItem => item.Description)
                     </td>
                     <td>
@@ -58,13 +58,13 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Duration)
                     </td>
-                    <td>
+                    <td style="max-width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
                         @Html.DisplayFor(modelItem => item.Genre)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Age)
                     </td>
-                    <td>
+                    <td style="max-width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
                         @Html.DisplayFor(modelItem => item.Img)
                     </td>
                     <td>

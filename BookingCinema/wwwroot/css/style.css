@@ -281,7 +281,7 @@ body.active { overflow: hidden; }
 .movie-card .card-banner:hover::after { background: hsla(0, 0%, 100%, 0.05); }
 
 .movie-card .card-banner img {
-  width: 100%;
+  width: 410px;
   height: 100%;
   object-fit: cover;
 }

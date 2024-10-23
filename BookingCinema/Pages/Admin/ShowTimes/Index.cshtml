@@ -1,0 +1,57 @@
+﻿@page
+@model BookingCinema.Pages.Admin.ShowTimes.IndexModel
+
+@{
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="d-flex justify-content-between">
+    <h1>List Show Times</h1>
+
+    <p>
+        <a class="btn btn-primary" asp-page="Create">Create New</a>
+    </p>
+</div>
+<div class="card ">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Showtime[0].ShowDateTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Showtime[0].Movie)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Showtime[0].Theater)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Showtime)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ShowDateTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Movie.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Theater.TheaterName)
+                    </td>
+                    <td>
+                        <a class="btn btn-success" asp-page="./Edit" asp-route-id="@item.ShowtimeId">Edit</a> |
+                        <a class="btn btn-primary" asp-page="./Details" asp-route-id="@item.ShowtimeId">Details</a> |
+                        <a class="btn btn-danger" asp-page="./Delete" asp-route-id="@item.ShowtimeId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
