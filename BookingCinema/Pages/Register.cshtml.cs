@@ -1,4 +1,5 @@
-﻿using BusinessObjects.Models;
+﻿using BookingCinema.Services;
+using BusinessObjects.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Repositories.Users;
@@ -9,10 +10,12 @@ namespace BookingCinema.Pages;
 public class RegisterModel : PageModel
 {
     private readonly IUserRepository _repo;
+    private readonly IEmailService _service;
 
-    public RegisterModel(IUserRepository repo)
+    public RegisterModel(IUserRepository repo, IEmailService service)
     {
         _repo = repo;
+        _service = service;
     }
     public string? Message { get; set; }
 
@@ -50,7 +53,9 @@ public class RegisterModel : PageModel
 
         // Thêm người dùng mới vào cơ sở dữ liệu
         await _repo.InsertAsync(UserModel);
-        Message = "Đăng Ký Thành Công! <i class=\"bi bi-emoji-smile-fill\"></i>";
+        await _service.SendEmailAsync(UserModel.Email, "Cinema - Register Notification", 
+            "You have successfully registerd new account with your email and password: " + UserModel.Password);
+        Message = "You have registered successfully! <i class=\"bi bi-emoji-smile-fill\"></i>";
         return RedirectToPage("/Login", new { message = Message });
     }
 

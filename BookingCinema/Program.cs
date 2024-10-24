@@ -39,6 +39,9 @@ builder.Services.AddAuthorization();
 builder.Services.AddSession();
 builder.Services.AddSingleton<IVnPayService, VnPayService>();
 
+builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
+builder.Services.AddSingleton<IEmailService, EmailService>();
+
 builder.Services.AddTransient<IBookingRepository, BookingRepository>();
 builder.Services.AddTransient<IMovieRepository, MovieRepository>();
 builder.Services.AddTransient<IUserRepository, UserRepository>();

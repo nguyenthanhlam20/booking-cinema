@@ -11,24 +11,22 @@
 }
 
 .main {
-    width: 350px;
-    height: 500px;
+    width: 500px;
     background-image: linear-gradient(to bottom, #ff0844 0%, #ffb199 100%);
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 5px 20px 50px #000;
     margin-top: 80px;
+    padding-bottom: 30px;
 }
-
-
-
 
 label {
     color: #fff;
     font-size: 2.3em;
     justify-content: center;
     display: flex;
-    margin: 60px;
+    margin-bottom: 20px;
+    margin-top: 20px;
     font-weight: bold;
     cursor: pointer;
     transition: .5s ease-in-out;
@@ -39,22 +37,22 @@ label {
 }
 
 .input2 {
-    width: 75%;
     height: 40px;
     background: #e0dede;
     justify-content: center;
     display: flex;
-    margin: 20px auto;
     padding: 10px;
     border: none;
     outline: none;
     border-radius: 5px;
+    margin-bottom: 5px;
+    margin-top: 20px;
 }
 
 .button2 {
     justify-content: center;
     display: block;
-    margin: 10px auto;
+    margin: 20px auto;
     padding: 13px 40px;
     border-radius: 10px;
     border: 0;
@@ -65,6 +63,7 @@ label {
     box-shadow: rgb(201, 46, 70) 0px 10px 0px 0px;
     color: hsl(0, 0%, 100%);
     cursor: pointer;
+    width: 100%;
 }
 
     .button2:hover {

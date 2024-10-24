@@ -48,7 +48,8 @@ public class LoginModel : PageModel
         var claims = new List<Claim>
             {
                 new (ClaimTypes.NameIdentifier, existingUser.UserId.ToString()),
-                new (ClaimTypes.Name, existingUser.FullName ?? "")
+                new (ClaimTypes.Name, existingUser.FullName ?? ""),
+                new (ClaimTypes.Email, existingUser.Email ?? "")
             };
 
         if (existingUser.Role == "Admin")

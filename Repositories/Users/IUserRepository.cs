@@ -10,4 +10,6 @@ public interface IUserRepository
     Task InsertAsync(User entity);
     Task UpdateAsync(User entity);
     Task DeleteAsync(int id);
+    Task<string> ResetPasswordAsync(string email);
+    Task ChangePasswordAsync(string email, string newPassword);
 }
